@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Royal Academy — Our Creators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Global Reset and Base Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* === CREAMY/IVORY LIGHT MODE BODY STYLE === */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7E8; /* Creamy/Off-White Background */
+            color: #34495E; /* Charcoal/Forest Green - Default Body Text for light background */
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+            animation: fadeIn 0.9s ease forwards;
+            opacity: 0;
+        }
+
+        /* Color Palette Matches Main Index */
+        /* Primary Dark Text: #34495E (Charcoal/Forest Green) */
+        /* Main Accent: #F4B34C (Deep Ochre/Saffron) */
+        /* Background Cream: #FAF7E8 */
+        /* Inner Card/Highlight Ivory: #FFFFF0 */
+
+        /* 2. Header Styling */
+        header {
+            position: relative; 
+            background-color: #FAF7E8; /* Creamy background */
+            color: #34495E; /* Dark text */
+            padding: 35px 0 20px 80px; 
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
+            margin-bottom: 40px; 
+        }
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem); 
+            margin-bottom: 5px;
+            color: #F4B34C; /* Accent color for main title */
+        }
+        header p {
+            color: #34495E; /* Dark text for subtitle */
+        }
+        
+        /* 2.5. HAMBURGER MENU STYLING */
+        .menu-toggle {
+            position: fixed; 
+            top: 20px; 
+            left: 20px;
+            z-index: 110; 
+            width: 45px;
+            height: 45px;
+            background-color: #F4B34C; /* Accent color background */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-icon {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFF0; /* Light ivory lines */
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFF0;
+            position: absolute;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .menu-icon::before {
+            top: -8px;
+        }
+
+        .menu-icon::after {
+            top: 8px;
+        }
+
+        .menu-toggle.active .menu-icon {
+            background-color: transparent; /* Hide middle line */
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* --- Full-screen Menu Overlay -> SIDEBAR STYLING --- */
+        .overlay-menu {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 300px; 
+            max-width: 85%; 
+            height: 100%;
+            background-color: #FFFFF0; 
+            z-index: 105;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px; 
+            padding-left: 10px;
+            transform: translateX(-100%); 
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease; 
+        }
+
+        .overlay-menu.visible {
+            transform: translateX(0);
+        }
+
+        .overlay-menu ul {
+            list-style: none;
+            text-align: left; 
+            padding: 0;
+            width: 100%; 
+        }
+
+        .overlay-menu li {
+            margin: 5px 0; 
+        }
+
+        .overlay-menu a {
+            color: #34495E;
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: block; 
+            text-align: left; 
+            border-left: 4px solid transparent; 
+            transition: color 0.3s, background-color 0.3s, border-left-color 0.3s;
+        }
+
+        .overlay-menu a:hover {
+            background-color: #F4B34C15; 
+            color: #F4B34C; 
+            border-left-color: #F4B34C; 
+        }
+        /* --- END SIDEBAR STYLING --- */
+
+        /* 3. Main Content Layout */
+        main {
+            width: 90%; 
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+        section {
+            background: #FAF7E8; 
+            border-radius: 16px;
+            padding: 35px; 
+            margin-bottom: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05); 
+            border-top: 4px solid #F4B34C; 
+            padding-top: 40px; 
+        }
+        
+        h2 {
+            color: #34495E; 
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd; 
+            padding-bottom: 10px;
+            text-align: center; /* Center section titles */
+        }
+        p {
+            margin-bottom: 15px;
+            color: #34495E; 
+        }
+
+        /* Creator Grid Styling */
+        .creator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .creator-card {
+            background-color: #FFFFF0; /* Ivory background for cards */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid #F4B34C; /* Accent border on top */
+            /* Ensure the single card takes up more space in the grid */
+            grid-column: 1 / -1; 
+            max-width: 500px; /* Limit width for visual appeal */
+            margin: 30px auto; 
+        }
+
+        .creator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .creator-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Circular images */
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #A73C4E; /* Vibrant Scarlet border */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .creator-card h4 {
+            font-size: 1.3rem;
+            color: #34495E;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .creator-card .discipline {
+            font-size: 0.95rem;
+            color: #F4B34C; /* Accent color for discipline */
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .creator-card p {
+            font-size: 0.9rem;
+            color: #555; /* Slightly lighter text for bio */
+            line-height: 1.5;
+        }
+
+        /* Role Model Highlight Box Style */
+        .role-model-box {
+            background-color: #FFFFF0;
+            border: 2px solid #A73C4E; /* Use Scarlet for a strong highlight */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; /* Enable flexbox for side-by-side content */
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            align-items: flex-start; /* Align items to the top */
+            gap: 20px; /* Space between image and text */
+        }
+        .role-model-box h3 {
+            color: #A73C4E;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+            width: 100%; /* Ensure title takes full width */
+        }
+        .role-model-box strong {
+            color: #34495E;
+        }
+
+        .role-model-image-wrapper {
+            flex-shrink: 0; /* Prevent image from shrinking */
+            width: 150px; /* Fixed width for the image */
+            height: 150px; /* Fixed height for the image */
+            border-radius: 8px; /* Slightly rounded corners for the image container */
+            overflow: hidden; /* Hide overflowing parts of the image */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            margin: 0 auto; /* Center image if it's the only item on a row */
+        }
+
+        .role-model-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the container without distortion */
+            display: block;
+        }
+
+        .role-model-content {
+            flex-grow: 1; /* Allow content to take up remaining space */
+            text-align: left; /* Align text content to the left */
+        }
+        .role-model-content ul {
+            padding-left: 20px; /* Indent the list for readability */
+        }
+        .role-model-content ul li::before {
+            content: "◆"; /* Saffron accent bullet */
+            color: #F4B34C;
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em; /* Pull bullet back */
+        }
+        .role-model-content p {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* Responsive adjustments for role model box */
+        @media (max-width: 600px) {
+            .role-model-box {
+                flex-direction: column; /* Stack image and text vertically */
+                align-items: center; /* Center items when stacked */
+            }
+            .role-model-image-wrapper {
+                margin-bottom: 15px; /* Add space below image when stacked */
+            }
+        }
+
+        /* 4. Footer Styling */
+        footer {
+            text-align: center;
+            background: #FAF7E8; 
+            color: #34495E; 
+            padding: 28px 0;
+            margin-top: 60px;
+            font-size: 1rem;
+            letter-spacing: 0.6px;
+            border-top: 5px solid #F4B34C; 
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 5. Animations and Responsiveness */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                 padding-left: 70px; 
+                 padding-right: 10px;
+            }
+            main {
+                width: 95%;
+            }
+            section {
+                padding: 25px;
+            }
+            .creator-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="menu-toggle" id="menuToggle">
+        <span class="menu-icon"></span>
+    </div>
+    
+    <div class="overlay-menu" id="overlayMenu">
+        <ul>
+            <li><a href="index.html">Main Page (asthetics in the royal academy)</a></li>
+            <li><a href="creator.html">Our Creators</a></li> 
+            <li><a href="painting.html">Painting (Lha Zo)</a></li>
+            <li><a href="sculpture.html">Sculpture (Jim Zo)</a></li>
+            <li><a href="weaving.html">Weaving (Thag Zo)</a></li>
+            <li><a href="carving.html">Wood Carving (Shing Zo)</a></li>
+        </ul>
+    </div>
+    
+    <header>
+        <h1>Royal Academy: Meet Our Talented Creators</h1>
+        <p>Showcasing the artists who bring Bhutanese traditions to life.</p>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                This section features the profile of an inspiring student creator from the Royal Academy, dedicated to pursuing aesthetics and technology while embracing a wide array of personal interests.
+            </p>
+        </section>
+
+        <section id="creator-profiles">
+            <h2>Creator Profile</h2>
+            <div class="creator-grid">
+
+                <div class="creator-card">
+                    <img src="https://via.placeholder.com/120/A73C4E/FFFFF0?text=CD" alt="Chhimi Dorji">
+                    <h4>Chhimi Dorji</h4>
+                    <p class="discipline">Student, The Royal Academy (Paro Pangbisa)</p>
+                    <p>
+                        Chhimi, hailing from **Thimphu**, is currently studying at the **Royal Academy Paro Pangbisa**. Known for a deep curiosity and a wide variety of **hobbies**, Chhimi embodies a passion for both traditional Bhutanese arts and modern expressive forms.
+                    </p>
+                    <p>
+                        A true multidisciplinary learner, Chhimi's interests span across different fields, reflecting a constant desire to learn, analyze, and apply creative thinking to every challenge.
+                    </p>
+                </div>
+            </div>
+
+            <div class="role-model-box">
+                <h3>🔍 Role Model Spotlight: L (from Death Note)</h3>
+                <div class="role-model-image-wrapper">
+                    <img src="l.jpg" alt="L from Death Note">
+                </div>
+                <div class="role-model-content">
+                    <p>
+                        Chhimi looks up to **L** from the anime *Death Note* because of his **exceptional intellectual process** and his **unconventional approach** to problem-solving.
+                    </p>
+                    <p>
+                        **Why L is a Role Model:**
+                        <ul>
+                            <li><strong>Analytical Prowess:</strong> L possesses incredible **deductive reasoning** and the ability to connect seemingly unrelated clues, showcasing the power of **critical thinking**.</li>
+                            <li><strong>Unconventional Thinking:</strong> He isn't bound by traditional methods. His willingness to **adopt eccentric tactics** and challenge accepted norms is appealing to a creative mind.</li>
+                            <li><strong>Drive for Truth:</strong> Despite his unusual methods, L's fundamental motivation is a relentless pursuit of **justice and truth**, making him an ethical idealist wrapped in an eccentric shell.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Aesthetic Excellence and Cultural Preservation | Royal Academy Bhutan</p>
+        <p>© 2025 Royal Academy — Chhimi Dorji | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('overlayMenu');
+            this.classList.toggle('active');
+            menu.classList.toggle('visible');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.overlay-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menuToggle').classList.remove('active');
+                document.getElementById('overlayMenu').classList.remove('visible');
+            });
+        });
+    </script>
+</body>
+</html>

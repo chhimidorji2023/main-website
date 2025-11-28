@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Sacred Brush: Bhutanese Painting (Lha Zo)</title>
+    <!-- Switching to Inter font for consistency with the main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. Global Reset and Base Styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* === CREAMY/IVORY LIGHT MODE BODY STYLE === */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7E8; /* Creamy/Off-White Background */
+            color: #34495E; /* Charcoal/Forest Green - Default Body Text for light background */
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+            animation: fadeIn 0.9s ease forwards;
+            opacity: 0;
+        }
+
+        /* Color Palette Variables (Creamy/Saffron Aesthetic) */
+        /* Primary Dark Text: #34495E (Charcoal/Forest Green) */
+        /* Main Accent: #F4B34C (Deep Ochre/Saffron) */
+        /* Background Cream: #FAF7E8 */
+        /* Inner Card/Highlight Ivory: #FFFFF0 */
+
+        /* 2. Header Styling */
+        header {
+            position: relative; 
+            background-color: #FAF7E8; /* Creamy background */
+            color: #34495E; /* Dark text */
+            /* Padding adjustment for the fixed menu icon */
+            padding: 35px 0 20px 80px; 
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1); 
+            margin-bottom: 40px; 
+        }
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem); 
+            margin-bottom: 5px;
+            color: #F4B34C; /* Accent color for main title */
+        }
+        header p {
+            color: #34495E; /* Dark text for subtitle */
+        }
+        
+        /* 2.5. HAMBURGER MENU STYLING (The menu toggle is fixed) */
+        .menu-toggle {
+            position: fixed; 
+            top: 20px; 
+            left: 20px;
+            z-index: 110; 
+            width: 45px;
+            height: 45px;
+            background-color: #F4B34C; /* Accent color background */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        /* The three-line icon */
+        .menu-icon {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFF0; /* Light ivory lines */
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFF0;
+            position: absolute;
+            transition: transform 0.3s ease, top 0.3s ease;
+        }
+
+        .menu-icon::before {
+            top: -8px;
+        }
+
+        .menu-icon::after {
+            top: 8px;
+        }
+
+        /* Active state (X icon) */
+        .menu-toggle.active .menu-icon {
+            background-color: transparent; 
+        }
+
+        .menu-toggle.active .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* --- Full-screen Menu Overlay -> SIDEBAR STYLING --- */
+        .overlay-menu {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 300px; 
+            max-width: 85%; 
+            height: 100%;
+            background-color: #FFFFF0; /* Ivory background */
+            z-index: 105;
+            
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px; 
+            padding-left: 10px;
+            
+            transform: translateX(-100%); 
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease; 
+        }
+
+        .overlay-menu.visible {
+            transform: translateX(0);
+        }
+
+        .overlay-menu ul {
+            list-style: none;
+            text-align: left; 
+            padding: 0;
+            width: 100%; 
+        }
+
+        .overlay-menu li {
+            margin: 5px 0; 
+        }
+
+        .overlay-menu a {
+            color: #34495E;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: block; 
+            text-align: left; 
+            border-left: 4px solid transparent; 
+            transition: color 0.3s, background-color 0.3s, border-left-color 0.3s;
+        }
+
+        /* Highlight active/current page */
+        .overlay-menu a[href="painting.html"] {
+            background-color: #F4B34C15; /* Very light accent background */
+            color: #F4B34C; /* Accent text color */
+            border-left-color: #F4B34C; /* Saffron accent on the left */
+        }
+
+        .overlay-menu a:hover {
+            background-color: #F4B34C15; 
+            color: #F4B34C; 
+            border-left-color: #F4B34C; 
+        }
+        /* --- END SIDEBAR STYLING --- */
+
+        /* 3. Main Content Layout */
+        main {
+            width: 90%; 
+            max-width: 900px;
+            margin: 0 auto;
+            padding-bottom: 60px;
+        }
+        section {
+            background: #FAF7E8; 
+            border-radius: 16px;
+            padding: 35px; 
+            margin-bottom: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05); 
+            border-top: 4px solid #F4B34C; 
+            padding-top: 40px; 
+        }
+        
+        h2 {
+            color: #34495E; 
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd; 
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            color: #34495E; 
+        }
+
+        /* Image Styling */
+        .content-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px; 
+            margin: 25px 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Highlight Box: Use the whiter Ivory color to stand out slightly */
+        .highlight-box {
+            background-color: #FFFFF0; 
+            border: 2px solid #F4B34C; 
+            border-radius: 10px; 
+            padding: 20px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #34495E; 
+        }
+        
+        /* List Styling for emphasis */
+        h3 {
+            color: #34495E;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+        }
+        ul li::before {
+            /* Changed to consistent bullet point */
+            content: "◆"; 
+            color: #F4B34C; /* Saffron accent bullet */
+            font-weight: bold; 
+            display: inline-block; 
+            width: 1.5em; 
+        }
+
+        /* 4. Footer Styling */
+        footer {
+            text-align: center;
+            background: #FAF7E8; 
+            color: #34495E; 
+            padding: 28px 0;
+            margin-top: 60px;
+            font-size: 1rem;
+            letter-spacing: 0.6px;
+            border-top: 5px solid #F4B34C; 
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 5. Animations and Responsiveness */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                 padding-left: 70px; 
+                 padding-right: 10px;
+            }
+            main {
+                width: 95%;
+            }
+            section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 1. HAMBURGER MENU ICON (FIXED TOP LEFT) -->
+    <div class="menu-toggle" id="menuToggle">
+        <span class="menu-icon"></span>
+    </div>
+    
+    <!-- 2. SLIDE-OUT NAVIGATION SIDEBAR (Using Zorig Chusum Links) -->
+    <div class="overlay-menu" id="overlayMenu">
+        <ul>
+            <li><a href="index.html">Main Page (Zorig Chusum)</a></li>
+            <li><a href="painting.html">Painting (Lha Zo)</a></li>
+            <li><a href="sculpture.html">Sculpture (Jim Zo)</a></li>
+            <li><a href="weaving.html">Weaving (Thag Zo)</a></li>
+            <li><a href="carving.html">Wood Carving (Shing Zo)</a></li>
+            <li><a href="music.html">Music (Ghim)</a></li>
+            <li><a href="theatre.html">Theatre (Lhamo)</a></li>
+        </ul>
+    </div>
+    
+    <header>
+        <h1>The Sacred Brush: Bhutanese Painting (Lha Zo)</h1>
+        <p>Aesthetics of Iconography, Color, and Proportion</p>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Painting as a Devotional Art</h2>
+            <p>
+                In Bhutan, the art of painting, known as **Lha Zo**, is a deeply sacred practice, not merely a decorative one. Artists, who are often monks or highly trained artisans, follow strict canonical rules to ensure the image accurately represents its spiritual subject. The purpose of *Lha Zo* is to create a visual support for meditation and to transmit the essence of Buddhist philosophy.
+            </p>
+            <!-- Updated placeholder colors to match the new palette -->
+            <img src="https://placehold.co/900x400/34495E/F4B34C?text=Bhutanese+Thangka+Painting" 
+                 alt="Bhutanese Thangka Scroll Painting in progress" 
+                 class="content-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/900x400/34495E/F4B34C?text=Bhutanese+Painting+Mural';"
+            >
+        </section>
+
+        <section id="principles">
+            <h2>Aesthetic and Technical Principles</h2>
+            <p>
+                The aesthetic excellence of a Bhutanese painting is measured by its adherence to technical guidelines, which govern everything from the preparation of the canvas to the final application of gold leaf.
+            </p>
+            
+            <h3>Core Technical Disciplines:</h3>
+            <ul>
+                <li><strong>Thig Thad (Proportion and Grid):</strong> Every deity and figure must be laid out using a precise geometric grid. This grid dictates the proportion of the figure, ensuring iconographic correctness and spiritual power. </li>
+                <li><strong>Mineral Pigments:</strong> Colors are traditionally derived from natural earth and mineral sources, giving the paintings a rich, lasting quality. Gold is often used lavishly to symbolize divinity and the rarity of the teachings.</li>
+                <li><strong>The Five Sacred Colors:</strong> Each color carries deep symbolism: White (purity), Yellow (wealth/prosperity), Red (power/force), Blue (wisdom/sky), and Green (action/karma).</li>
+            </ul>
+        </section>
+
+        <section id="forms">
+            <h2>The Two Principal Forms</h2>
+            <p>
+                *Lha Zo* is primarily manifested in two distinct physical forms, each serving a different function within the monastic and public spheres.
+            </p>
+            
+            <h3>Main Forms of Painting:</h3>
+            <ul>
+                <li><strong>Thangka (Scroll Paintings):</strong> These are portable paintings, typically executed on cotton or silk. They are traditionally rolled up and carried by monks, used as teaching aids, or displayed temporarily during religious ceremonies.</li>
+                <li><strong>Lha Dri (Mural Painting):</strong> These are large, permanent frescoes painted directly onto the walls of temples (*Lhakhangs*) and fortresses (*Dzongs*). They depict life stories of key figures or entire mandalas, transforming the space into a sacred, didactic environment.</li>
+            </ul>
+            <div class="highlight-box">
+                "In *Lha Zo*, the artist serves as a conduit. The beauty of the final piece is secondary to its spiritual accuracy and ability to inspire devotion."
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Aesthetic Excellence and Cultural Preservation | Royal Academy Bhutan</p>
+        <p>© 2025 Sacred Painting Studies | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('overlayMenu');
+            this.classList.toggle('active');
+            menu.classList.toggle('visible');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.overlay-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menuToggle').classList.remove('active');
+                document.getElementById('overlayMenu').classList.remove('visible');
+            });
+        });
+    </script>
+</body>
+</html>
