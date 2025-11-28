@@ -172,6 +172,13 @@
             border-left: 4px solid transparent; 
             transition: color 0.3s, background-color 0.3s, border-left-color 0.3s;
         }
+        
+        /* Highlight active/current page */
+        .overlay-menu a[href="sculpture.html"] {
+            background-color: #F4B34C15; /* Very light accent background */
+            color: #F4B34C; /* Accent text color */
+            border-left-color: #F4B34C; /* Saffron accent on the left */
+        }
 
         .overlay-menu a:hover {
             background-color: #F4B34C15; /* Very light accent background */
@@ -215,7 +222,8 @@
         .content-image {
             width: 100%;
             height: auto;
-            max-height: 400px;
+            /* Adjusted size slightly for better flow with the new text content */
+            max-height: 350px; 
             object-fit: cover;
             border-radius: 12px; 
             margin: 25px 0;
@@ -300,7 +308,7 @@
         <span class="menu-icon"></span>
     </div>
     
-    <!-- 2. SLIDE-OUT NAVIGATION SIDEBAR (The menu overlay must remain fixed to cover the screen) -->
+    <!-- 2. SLIDE-OUT NAVIGATION SIDEBAR (Using Zorig Chusum Links) -->
     <div class="overlay-menu" id="overlayMenu">
         <ul>
             <li><a href="index.html">Main Page (Zorig Chusum)</a></li>
@@ -318,29 +326,43 @@
 
     <main>
         <section id="introduction">
-            <h2>The Spiritual Significance of *Jimzo*</h2>
+            <h2>The Spiritual and Curricular Significance of Jimzo</h2>
             <p>
-                In Bhutan, **Jimzo** (literally meaning "clay work") refers to the traditional art of sculpture, a practice revered as one of the thirteen arts and crafts (*Zorig Chusum*). These creations are fundamentally religious, serving as **sacred objects** for meditation and worship within fortress-monasteries (*Dzongs*) and temples. The purpose is not mere aesthetic pleasure, but the embodiment of divine figures, such as Buddhas and Bodhisattvas.
+                In Bhutan, Jimzo (literally meaning "clay work") refers to the traditional art of sculpture, a practice revered as one of the thirteen arts and crafts (Zorig Chusum). These creations are fundamentally religious, serving as sacred objects for meditation and worship within fortress-monasteries (Dzongs) and temples. The purpose is not mere aesthetic pleasure, but the embodiment of divine figures, such as Buddhas and Bodhisattvas.
             </p>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn0:ANd9GcQ3XofoU7bHRblvE3iRdSnP-MSV7XvKN_lx8w&s" 
+            <img src="https://placehold.co/900x350/F4B34C/34495E?text=Bhutanese+Clay+Sculpture+of+a+Deity" 
                 alt="Bhutanese Clay Sculpture of a Deity" 
                 class="content-image"
-                onerror="this.onerror=null; this.src='https://placehold.co/900x400/F4B34C/34495E?text=Traditional+Sculpture+Placeholder';"
+                onerror="this.onerror=null; this.src='https://placehold.co/900x350/F4B34C/34495E?text=Traditional+Sculpture+Placeholder';"
             >
+
+            <p>
+                Aesthetics Domain Context (The "Why" at TRA): The study and practice of Jimzo aligns directly with The Royal Academy’s curriculum goals under the Aesthetics Domain. It is vital for preserving cultural heritage and developing a range of core competencies.
+            </p>
+
+            <h3>Link to the Bhutan Baccalaureate:</h3>
+            <ul>
+                <li><strong>Cerebral Development:</strong> The precision required in Jimzo demands adherence to Thig-tshad (proportional canons), engaging analytical thought, planning, and geometry skills.</li>
+                <li><strong>Emotional Development:</strong> The demanding nature of the work—requiring immense patience, meticulous focus, and devotion—fosters self-discipline and emotional resilience.</li>
+                <li><strong>Spiritual Development:</strong> Since Jimzo creations are sacred objects for meditation, their creation and study inherently deepen spiritual practice and understanding of Buddhist principles.</li>
+                <li><strong>Social Development:</strong> Learning Jimzo promotes an appreciation for community bonds, local traditions, and the collaborative nature of creating monumental works for the public good.</li>
+                <li><strong>Physical Development:</strong> The intricate process of shaping, refining, and decorating the clay figures heavily develops fine motor skills, dexterity, and hand-eye coordination.</li>
+            </ul>
+            
         </section>
 
         <section id="iconography">
-            <h2>Aesthetics of Accuracy: *Thig-tshad*</h2>
+            <h2>Aesthetics of Accuracy: Thig-tshad</h2>
             <p>
-                The primary aesthetic rule governing *Jimzo* is not individual expression, but **spiritual accuracy**. The sculptor must rigidly adhere to the system of **Thig-tshad**, the ancient canons of proportion. This geometric grid defines the precise measurements, symmetry, and relational placement of every feature—from the length of the earlobes to the width of the shoulders.
+                The primary aesthetic rule governing Jimzo is not individual expression, but spiritual accuracy. The sculptor must rigidly adhere to the system of Thig-tshad, the ancient canons of proportion. This geometric grid defines the precise measurements, symmetry, and relational placement of every feature—from the length of the earlobes to the width of the shoulders.
             </p>
             <div class="highlight-box">
-                "The mastery of proportion ensures that the finished work is an authentic representation of the divine, capable of supporting the viewer's spiritual practice. Deviation from these geometric rules is considered spiritually incorrect."
+                "Thig-tshad is the ancient canon of proportion that dictates the precise geometry and measurement of the divine form, ensuring spiritual accuracy over personal artistic license."
             </div>
             
             <h3>Iconographic Requirements:</h3>
             <ul>
-                <li><strong>Mudras (Hand Gestures):</strong> Specific hand positions that symbolize core teachings, such as giving, meditation, or fearlessness.</li>
+                <li><strong>Mudras (Hand Gestures):</strong> Specific hand positions that symbolize core teachings, such as giving, meditation, or fearlessness. [Image of Buddhist Mudras chart]</li>
                 <li><strong>Asanas (Postures):</strong> Codified sitting or standing poses that convey the figure's nature (e.g., teaching or wrath).</li>
                 <li><strong>Ushnisha and Urna:</strong> Distinctive features symbolizing supreme spiritual wisdom, placed on the crown and forehead, respectively.</li>
             </ul>
@@ -349,7 +371,7 @@
         <section id="process">
             <h2>Traditional Materials and Technique</h2>
             <p>
-                The preparation for *Jimzo* is as much a ritual as an artistic process. While some works use bronze or carved wood, the vast majority of monumental figures are crafted from clay.
+                The preparation for Jimzo is as much a ritual as an artistic process. While some works use bronze or carved wood, the vast majority of monumental figures are crafted from clay.
             </p>
             
             <h3>The Clay Sculpting Process:</h3>
